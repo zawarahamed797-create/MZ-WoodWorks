@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MZ Wood Works — Crafting Excellence in Wood</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --walnut:#3E1C00; --amber:#C68B3A; --cream:#FAF3E0; --charcoal:#1A1A1A; --gold:#D4A547; --gold-light:#E8C06A;
+  --bg:#0F0A05; --bg2:#1A1008; --bg3:#251810; --surface:#2A1A0E; --surface2:#3A2415;
+  --text:#FAF3E0; --text2:#C8B89A; --text3:#8A7A65;
+  --border:rgba(196,133,58,0.2); --shadow:rgba(0,0,0,0.5); --glow:rgba(212,165,71,0.15);
+}
+[data-theme="light"] {
+  --bg:#FAF3E0; --bg2:#F0E8D0; --bg3:#E8DCC0; --surface:#FFFFFF; --surface2:#F5EDD8;
+  --text:#1A0F05; --text2:#4A3020; --text3:#8A7060; --border:rgba(62,28,0,0.15); --shadow:rgba(62,28,0,0.15); --glow:rgba(198,139,58,0.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);transition:background .4s,color .4s;overflow-x:hidden;}
+.urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--amber);border-radius:3px;}
+
+/* NAVBAR */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2rem;background:rgba(15,10,5,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .4s;height:70px;display:flex;align-items:center;}
+[data-theme="light"] #navbar{background:rgba(250,243,224,0.92);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1400px;margin:0 auto;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo .logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--walnut),var(--amber));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 15px rgba(196,139,58,0.3);}
+.nav-logo .logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gold);line-height:1.1;}
+.nav-logo .logo-sub{font-size:0.6rem;color:var(--text3);letter-spacing:3px;text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:0.1rem;}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:0.8rem;font-weight:500;padding:6px 11px;border-radius:6px;transition:all .3s;letter-spacing:0.3px;white-space:nowrap;}
+.nav-links a:hover{color:var(--gold);background:var(--glow);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+#themeToggle{background:var(--surface2);border:1px solid var(--border);color:var(--gold);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:16px;transition:all .3s;display:flex;align-items:center;justify-content:center;}
+#themeToggle:hover{background:var(--amber);color:#fff;transform:rotate(20deg);}
+.hamburger{display:none;background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer;padding:5px;}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1rem;z-index:999;}
+.mobile-menu a{display:block;color:var(--text2);text-decoration:none;padding:10px 15px;border-radius:8px;font-size:0.9rem;transition:all .3s;}
+.mobile-menu a:hover{color:var(--gold);background:var(--glow);}
+.mobile-menu.open{display:block;animation:slideDown .3s ease;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+#home{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at 20% 50%,rgba(62,28,0,0.8) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(198,139,58,0.15) 0%,transparent 50%),linear-gradient(160deg,#0F0A05 0%,#1A0E06 40%,#251505 100%);}
+[data-theme="light"] #home{background:radial-gradient(ellipse at 20% 50%,rgba(198,139,58,0.2) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(212,165,71,0.1) 0%,transparent 50%),linear-gradient(160deg,#FAF3E0 0%,#F0E4C4 100%);}
+.hero-bg-pattern{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,var(--amber) 0,var(--amber) 1px,transparent 0,transparent 50%);background-size:30px 30px;}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(196,139,58,0.08) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.1)}}
+.hero-content{text-align:center;position:relative;z-index:2;padding:0 2rem;max-width:900px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(196,139,58,0.12);border:1px solid rgba(196,139,58,0.3);color:var(--amber);font-size:0.75rem;letter-spacing:3px;text-transform:uppercase;padding:8px 20px;border-radius:100px;margin-bottom:2rem;animation:fadeUp .8s .2s both;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:1.1;margin-bottom:1rem;animation:fadeUp .8s .4s both;}
+.hero-title .line1{color:var(--text);}
+.hero-title .line2{background:linear-gradient(135deg,var(--amber),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:clamp(1.1rem,3vw,1.5rem);color:var(--amber);margin-bottom:2.5rem;animation:fadeUp .8s .6s both;line-height:2;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .8s both;}
+.btn-primary{background:linear-gradient(135deg,var(--amber),var(--gold));color:var(--charcoal);font-weight:600;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:0.9rem;transition:all .3s;border:none;cursor:pointer;box-shadow:0 6px 30px rgba(196,139,58,0.35);display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(196,139,58,0.5);}
+.btn-outline{background:transparent;color:var(--gold);font-weight:600;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:0.9rem;transition:all .3s;border:2px solid var(--gold);cursor:pointer;display:inline-flex;align-items:center;gap:8px;}
+.btn-outline:hover{background:var(--gold);color:var(--charcoal);transform:translateY(-3px);}
+.hero-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);animation:bounce 2s infinite;color:var(--amber);font-size:20px;opacity:0.6;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS COMMON */
+section{padding:100px 2rem;}
+.section-container{max-width:1200px;margin:0 auto;}
+.section-label{display:inline-flex;align-items:center;gap:8px;color:var(--amber);font-size:0.72rem;letter-spacing:4px;text-transform:uppercase;font-weight:600;margin-bottom:1rem;}
+.section-label::before,.section-label::after{content:'';width:30px;height:1px;background:var(--amber);opacity:0.5;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;color:var(--text);margin-bottom:0.8rem;}
+.section-title span{background:linear-gradient(135deg,var(--amber),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section-sub{color:var(--text3);font-size:0.95rem;max-width:600px;line-height:1.8;margin-bottom:3rem;}
+
+/* SERVICES */
+#services{background:var(--bg2);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.5rem;}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem 1.5rem;cursor:pointer;transition:all .4s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(196,139,58,0.05),transparent);opacity:0;transition:opacity .4s;}
+.service-card:hover{transform:translateY(-8px);border-color:rgba(212,165,71,0.5);box-shadow:0 20px 50px rgba(0,0,0,0.3),0 0 0 1px rgba(212,165,71,0.2);}
+.service-card:hover::before{opacity:1;}
+.service-icon{width:54px;height:54px;background:linear-gradient(135deg,var(--walnut),var(--amber));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:1.2rem;box-shadow:0 8px 25px rgba(196,139,58,0.3);}
+.service-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.5rem;}
+.service-urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:0.85rem;color:var(--amber);line-height:2;margin-bottom:0.5rem;}
+.service-desc{font-size:0.8rem;color:var(--text3);line-height:1.7;}
+
+/* PRICING TABLE */
+#pricing{background:var(--bg);}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;}
+.price-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all .4s;display:flex;flex-direction:column;gap:0.6rem;position:relative;overflow:hidden;}
+.price-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 15px 40px var(--glow);}
+.price-card .pc-icon{font-size:1.8rem;}
+.price-card .pc-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--text);}
+.price-card .pc-urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;color:var(--amber);font-size:0.85rem;line-height:1.9;}
+.price-card .pc-rate{font-size:1.6rem;font-weight:800;color:var(--gold);font-family:'Playfair Display',serif;}
+.price-card .pc-rate small{font-size:0.8rem;color:var(--text3);font-weight:400;}
+.pc-use-btn{margin-top:0.5rem;background:var(--surface2);border:1px solid var(--border);color:var(--amber);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:0.78rem;font-weight:600;transition:all .3s;align-self:flex-start;}
+.pc-use-btn:hover{background:var(--amber);color:#fff;}
+
+/* CALCULATOR */
+#calculator{background:var(--bg2);}
+.calc-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2.5rem;max-width:800px;margin:0 auto;box-shadow:0 20px 60px var(--shadow);}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.5rem;}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-size:0.78rem;font-weight:600;color:var(--amber);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.form-group select,.form-group input,.form-group textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:12px 14px;font-family:'Poppins',sans-serif;font-size:0.9rem;transition:border-color .3s;outline:none;}
+.form-group select:focus,.form-group input:focus,.form-group textarea:focus{border-color:var(--amber);box-shadow:0 0 0 3px var(--glow);}
+.calc-result{background:linear-gradient(135deg,var(--walnut),rgba(62,28,0,0.6));border:1px solid var(--gold);border-radius:16px;padding:2rem;margin-top:1rem;}
+.calc-result-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(212,165,71,0.15);font-size:0.9rem;color:var(--cream);}
+.calc-result-row:last-child{border-bottom:none;}
+.calc-result-row.total{font-size:1.4rem;font-weight:800;color:var(--gold-light);padding-top:14px;font-family:'Playfair Display',serif;}
+.calc-result-row .label{color:#e8d8c0;}
+.calc-result-row .value{font-weight:700;}
+.calc-note{margin-top:1.5rem;text-align:center;font-size:0.8rem;color:var(--text3);line-height:1.9;}
+.calc-note .urdu{display:block;color:var(--amber);font-size:0.88rem;margin-top:0.3rem;}
+.cutting-note{background:rgba(212,165,71,0.1);border:1px solid var(--gold);border-radius:10px;padding:1rem;font-size:0.85rem;color:var(--gold-light);text-align:center;margin-top:1rem;}
+
+/* PROCESS */
+#process{background:var(--bg);}
+.process-timeline{position:relative;max-width:900px;margin:0 auto;}
+.process-timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,var(--amber),var(--amber),transparent);transform:translateX(-50%);}
+.process-step{display:grid;grid-template-columns:1fr auto 1fr;gap:2rem;align-items:center;margin-bottom:3rem;}
+.process-step:nth-child(even) .step-content{order:3;text-align:left;}
+.process-step:nth-child(even) .step-empty{order:1;}
+.step-content{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:all .4s;}
+.step-content:hover{border-color:var(--amber);box-shadow:0 10px 35px var(--glow);}
+.step-num{width:50px;height:50px;background:linear-gradient(135deg,var(--walnut),var(--amber));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;color:var(--cream);box-shadow:0 0 0 6px var(--bg),0 0 0 8px var(--amber);flex-shrink:0;}
+.step-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:0.4rem;}
+.step-text{font-size:0.82rem;color:var(--text3);line-height:1.7;}
+.step-empty{}
+
+/* TERMS */
+#terms{background:var(--bg2);}
+.pricing-grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;}
+.policy-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:all .3s;}
+.policy-card:hover{border-color:rgba(212,165,71,0.4);transform:translateX(4px);}
+.policy-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px;}
+.policy-title{font-weight:600;color:var(--text);font-size:0.95rem;margin-bottom:0.3rem;}
+.policy-desc{font-size:0.82rem;color:var(--text3);line-height:1.7;}
+.policy-urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:0.8rem;color:var(--amber);margin-top:0.4rem;line-height:2;}
+
+/* AGREEMENT */
+#agreement{background:var(--bg);}
+.agreement-form{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:900px;margin:0 auto;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.terms-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;font-size:0.82rem;color:var(--text2);line-height:2;max-height:240px;overflow-y:auto;margin-bottom:1.5rem;}
+.terms-box h4{font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:1rem;font-size:1rem;}
+.terms-box p{margin-bottom:0.7rem;}
+.terms-box .urdu-term{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;display:block;color:var(--amber);margin:0.3rem 0;font-size:0.88rem;}
+.sig-row{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;}
+.sig-box{border-top:2px solid var(--amber);padding-top:1rem;text-align:center;}
+.sig-box .sig-label{font-size:0.75rem;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.5rem;}
+.sig-box input{background:transparent;border:none;border-bottom:1px dashed var(--border);width:100%;text-align:center;color:var(--text);font-size:0.9rem;padding:6px 0;outline:none;}
+
+/* CONTACT */
+#contact{background:var(--bg2);}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contact-cards{display:grid;gap:1rem;}
+.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:all .3s;}
+.contact-card:hover{border-color:rgba(212,165,71,0.4);box-shadow:0 10px 35px var(--glow);}
+.contact-phone{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
+.contact-btns{display:flex;gap:8px;flex-wrap:wrap;}
+.btn-call{background:linear-gradient(135deg,var(--walnut),var(--amber));color:var(--cream);padding:9px 18px;border-radius:8px;text-decoration:none;font-size:0.82rem;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s;}
+.btn-call:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(196,139,58,0.4);}
+.btn-whatsapp{background:linear-gradient(135deg,#128C7E,#25D366);color:#fff;padding:9px 18px;border-radius:8px;text-decoration:none;font-size:0.82rem;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .3s;}
+.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,0.4);}
+.contact-form-panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;}
+.contact-form-panel h3{font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:1.5rem;font-size:1.2rem;}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;}
+.footer-brand .logo-text{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold);}
+.footer-tagline{color:var(--text3);font-size:0.82rem;margin-top:0.5rem;line-height:1.7;max-width:260px;}
+.footer-tagline .urdu{color:var(--amber);font-size:0.88rem;margin-top:0.5rem;}
+.footer-links h4{font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;}
+.footer-links a{display:block;color:var(--text3);text-decoration:none;font-size:0.82rem;margin-bottom:0.5rem;transition:color .3s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{max-width:1200px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{color:var(--text3);font-size:0.78rem;}
+
+/* TOAST */
+#toast{position:fixed;bottom:30px;right:30px;z-index:9999;background:linear-gradient(135deg,var(--walnut),var(--amber));color:var(--cream);padding:14px 24px;border-radius:12px;font-size:0.88rem;font-weight:500;opacity:0;transform:translateY(20px);transition:all .4s;pointer-events:none;box-shadow:0 10px 40px rgba(0,0,0,0.4);}
+#toast.show{opacity:1;transform:translateY(0);}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* PRINT */
+@media print{
+  body *{visibility:hidden;}
+  #printArea,#printArea *{visibility:visible;}
+  #printArea{position:fixed;inset:0;background:#fff;color:#000;padding:2cm;z-index:9999;font-size:12pt;}
+  @page{margin:0.5cm;}
+}
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .contact-layout{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .process-timeline::before{left:24px;}
+  .process-step{grid-template-columns:48px 1fr;}
+  .process-step:nth-child(even) .step-content{order:2;text-align:left;}
+  .process-step:nth-child(even) .step-empty{display:none;}
+  .step-empty{display:none;}
+  .sig-row{grid-template-columns:1fr;}
+  .calc-grid{grid-template-columns:1fr;}
+}
+@media (max-width:600px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  section{padding:70px 1.2rem;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .footer-inner{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="logo-icon">🪵</div>
+      <div>
+        <div class="logo-text">MZ Wood Works</div>
+        <div class="logo-sub">Crafting Excellence</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#process">Process</a>
+      <a href="#agreement">Agreement</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button id="themeToggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+      <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">🏠 Home</a>
+  <a href="#services" onclick="closeMenu()">🛠️ Services</a>
+  <a href="#pricing" onclick="closeMenu()">💰 Pricing</a>
+  <a href="#calculator" onclick="closeMenu()">🧮 Calculator</a>
+  <a href="#process" onclick="closeMenu()">📋 Process</a>
+  <a href="#agreement" onclick="closeMenu()">📄 Agreement</a>
+  <a href="#contact" onclick="closeMenu()">📞 Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-star"></i> Premium Wood Craftsmanship</div>
+    <h1 class="hero-title">
+      <span class="line1">Crafting Excellence</span><br>
+      <span class="line2">in Wood</span>
+    </h1>
+    <div class="hero-urdu">ہر لکڑی کے کام میں معیار اور خوبصورتی</div>
+    <div class="hero-btns">
+      <a href="#calculator" class="btn-primary"><i class="fas fa-calculator"></i> Calculate Your Cost</a>
+      <a href="#agreement" class="btn-outline"><i class="fas fa-file-contract"></i> Download Agreement</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-container">
+    <div class="section-label reveal">Our Services</div>
+    <h2 class="section-title reveal">Everything We <span>Craft For You</span></h2>
+    <p class="section-sub reveal">Professional woodworking services from design to delivery.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🍳</div>
+        <div class="service-name">Kitchen Design & Build</div>
+        <div class="service-urdu">کچن ڈیزائن اور تعمیر</div>
+        <div class="service-desc">Full kitchen design, fabrication and installation — modular and custom kitchens.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚪</div>
+        <div class="service-name">Wardrobe (Handle/Handleless)</div>
+        <div class="service-urdu">ہینڈل اور بغیر ہینڈل الماری</div>
+        <div class="service-desc">Custom wardrobes in handle and handleless designs, built to your space.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📺</div>
+        <div class="service-name">Media Wall</div>
+        <div class="service-urdu">میڈیا وال</div>
+        <div class="service-desc">Stunning media wall units designed for your living space.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🪵</div>
+        <div class="service-name">3D Sketch / Preview</div>
+        <div class="service-urdu">کام سے پہلے 3D ڈیزائن دیکھیں</div>
+        <div class="service-desc">See your project in 3D before work begins, so you know exactly what will be built.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">👁️</div>
+        <div class="service-name">Supervision Service</div>
+        <div class="service-urdu">صرف نگرانی سروس</div>
+        <div class="service-desc">Expert supervision if you manage your own labor team.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📐</div>
+        <div class="service-name">Cutting List Service</div>
+        <div class="service-urdu">کٹنگ لسٹ سروس</div>
+        <div class="service-desc">Precise cutting list preparation, priced according to project scope.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🔧</div>
+        <div class="service-name">With / Without Material</div>
+        <div class="service-urdu">مٹیریل کے ساتھ یا بغیر (لیبر اونلی)</div>
+        <div class="service-desc">We work with your materials (labor only) or supply premium materials ourselves.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING TABLE -->
+<section id="pricing">
+  <div class="section-container">
+    <div class="section-label reveal">Transparent Rates</div>
+    <h2 class="section-title reveal">Our <span>Pricing</span></h2>
+    <p class="section-sub reveal">Clear per-square-foot rates for every type of service. Click "Use in Calculator" to get an instant estimate.</p>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="pc-icon">🔨</div>
+        <div class="pc-name">Labor Only (Without Material)</div>
+        <div class="pc-urdu">صرف لیبر — بغیر مٹیریل</div>
+        <div class="pc-rate">Rs. 600 <small>/ sq.ft</small></div>
+        <button class="pc-use-btn" onclick="useInCalculator('labor')">Use in Calculator</button>
+      </div>
+      <div class="price-card reveal">
+        <div class="pc-icon">🪵</div>
+        <div class="pc-name">With Material (Full Service)</div>
+        <div class="pc-urdu">مٹیریل کے ساتھ مکمل سروس</div>
+        <div class="pc-rate">Rs. 3,500 <small>/ sq.ft</small></div>
+        <button class="pc-use-btn" onclick="useInCalculator('material')">Use in Calculator</button>
+      </div>
+      <div class="price-card reveal">
+        <div class="pc-icon">🖥️</div>
+        <div class="pc-name">3D Sketch Only</div>
+        <div class="pc-urdu">صرف 3D ڈیزائن</div>
+        <div class="pc-rate">Rs. 100 <small>/ sq.ft</small></div>
+        <button class="pc-use-btn" onclick="useInCalculator('sketch')">Use in Calculator</button>
+      </div>
+      <div class="price-card reveal">
+        <div class="pc-icon">👁️</div>
+        <div class="pc-name">Supervision Only</div>
+        <div class="pc-urdu">صرف سپروژن سروس</div>
+        <div class="pc-rate">Rs. 150 <small>/ sq.ft</small></div>
+        <button class="pc-use-btn" onclick="useInCalculator('supervision')">Use in Calculator</button>
+      </div>
+      <div class="price-card reveal">
+        <div class="pc-icon">🎯</div>
+        <div class="pc-name">3D Sketch + Supervision</div>
+        <div class="pc-urdu">3D ڈیزائن + سپروژن</div>
+        <div class="pc-rate">Rs. 250 <small>/ sq.ft</small></div>
+        <button class="pc-use-btn" onclick="useInCalculator('sketch_supervision')">Use in Calculator</button>
+      </div>
+      <div class="price-card reveal">
+        <div class="pc-icon">📐</div>
+        <div class="pc-name">3D Sketch + Cutting List</div>
+        <div class="pc-urdu">3D ڈیزائن + کٹنگ لسٹ</div>
+        <div class="pc-rate">Rs. 200 <small>/ sq.ft</small></div>
+        <button class="pc-use-btn" onclick="useInCalculator('sketch_cutting')">Use in Calculator</button>
+      </div>
+      <div class="price-card reveal">
+        <div class="pc-icon">📋</div>
+        <div class="pc-name">Cutting List Only</div>
+        <div class="pc-urdu">صرف کٹنگ لسٹ — پراجیکٹ کے حساب سے</div>
+        <div class="pc-rate" style="font-size:1.1rem;">Custom Quote</div>
+        <button class="pc-use-btn" onclick="useInCalculator('cutting')">Use in Calculator</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator">
+  <div class="section-container">
+    <div class="section-label reveal">Instant Estimate</div>
+    <h2 class="section-title reveal">Pricing <span>Calculator</span></h2>
+    <p class="section-sub reveal">Select your service, enter square feet, and get an instant cost estimate.</p>
+    <div class="calc-box reveal">
+      <div class="calc-grid">
+        <div class="form-group">
+          <label>Select Service</label>
+          <select id="calcService" onchange="calculate()">
+            <option value="labor">Labor Only — Rs. 600/sq.ft</option>
+            <option value="material">With Material — Rs. 3,500/sq.ft</option>
+            <option value="sketch">3D Sketch Only — Rs. 100/sq.ft</option>
+            <option value="supervision">Supervision Only — Rs. 150/sq.ft</option>
+            <option value="sketch_supervision">3D Sketch + Supervision — Rs. 250/sq.ft</option>
+            <option value="sketch_cutting">3D Sketch + Cutting List — Rs. 200/sq.ft</option>
+            <option value="cutting">Cutting List Only — Custom Quote</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Enter Total Square Feet</label>
+          <input type="number" id="calcSqft" placeholder="e.g. 120" min="0" oninput="calculate()">
+        </div>
+      </div>
+
+      <div id="cuttingNote" class="cutting-note" style="display:none;">
+        📋 Cutting List pricing depends on your specific project. Please contact us for a custom quote.<br>
+        <span class="urdu">کٹنگ لسٹ کا ریٹ پراجیکٹ کے حساب سے ہے — براہ کرم رابطہ کریں</span>
+      </div>
+
+      <div class="calc-result" id="calcResult">
+        <div class="calc-result-row"><span class="label">Selected Service</span><span class="value" id="resService">Labor Only</span></div>
+        <div class="calc-result-row"><span class="label">Rate per Sq.Ft</span><span class="value" id="resRate">Rs. 600</span></div>
+        <div class="calc-result-row"><span class="label">Total Square Feet</span><span class="value" id="resSqft">0</span></div>
+        <div class="calc-result-row total"><span class="label">Total Estimated Cost</span><span class="value" id="resTotal">Rs. 0</span></div>
+        <div class="calc-result-row"><span class="label">10% Advance Payment</span><span class="value" id="resAdvance">Rs. 0</span></div>
+        <div class="calc-result-row"><span class="label">Remaining Amount</span><span class="value" id="resRemaining">Rs. 0</span></div>
+      </div>
+
+      <div style="text-align:center;margin-top:1.5rem;">
+        <button class="btn-primary" onclick="quoteOnWhatsApp()"><i class="fab fa-whatsapp"></i> Get Quote on WhatsApp</button>
+      </div>
+
+      <div class="calc-note">
+        Final measurement will be done at site — pricing applies only to areas where door/sheet panels are installed.
+        <span class="urdu">حتمی پیمائش سائٹ پر کی جائے گی — صرف وہاں چارج ہوگا جہاں شیٹ لگے گی</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-container">
+    <div class="section-label reveal">How It Works</div>
+    <h2 class="section-title reveal">Our Work <span>Process</span></h2>
+    <p class="section-sub reveal">Simple, transparent and professional — from first call to final payment.</p>
+    <div class="process-timeline">
+      <div class="process-step">
+        <div class="step-content reveal-left">
+          <div class="step-title">Contact & Site Visit</div>
+          <div class="step-text">Call or WhatsApp us. We'll visit your site for consultation and discussion.</div>
+        </div>
+        <div class="step-num">1</div>
+        <div class="step-empty"></div>
+      </div>
+      <div class="process-step">
+        <div class="step-empty"></div>
+        <div class="step-num">2</div>
+        <div class="step-content reveal-right">
+          <div class="step-title">3D Sketch & Measurement</div>
+          <div class="step-text">Accurate measurement and optional 3D design preview so you see exactly what will be built.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-content reveal-left">
+          <div class="step-title">Quotation & 10% Advance</div>
+          <div class="step-text">Final rate is agreed and 10% advance payment confirms the project start.</div>
+        </div>
+        <div class="step-num">3</div>
+        <div class="step-empty"></div>
+      </div>
+      <div class="process-step">
+        <div class="step-empty"></div>
+        <div class="step-num">4</div>
+        <div class="step-content reveal-right">
+          <div class="step-title">Work Begins</div>
+          <div class="step-text">Professional craftsmanship begins. In-city: food & accommodation by owner. Out-of-city: food, stay & travel by owner or separate charges apply.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-content reveal-left">
+          <div class="step-title">Completion & Full Payment</div>
+          <div class="step-text">Work inspected and handed over. Full remaining payment must be cleared immediately on completion.</div>
+        </div>
+        <div class="step-num">5</div>
+        <div class="step-empty"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section id="terms">
+  <div class="section-container">
+    <div class="section-label reveal">Terms & Conditions</div>
+    <h2 class="section-title reveal">Pricing <span>Policy</span></h2>
+    <p class="section-sub reveal">Clear, fair and transparent terms for every project we take on.</p>
+    <div class="pricing-grid2">
+      <div class="policy-card reveal">
+        <div class="policy-icon">💰</div>
+        <div>
+          <div class="policy-title">10% Advance on Confirmation</div>
+          <div class="policy-desc">Once the deal is finalized, 10% advance payment is required to start the project.</div>
+          <div class="policy-urdu">ڈیل فائنل ہونے پر 10% ایڈوانس ادا کرنا ہوگا</div>
+        </div>
+      </div>
+      <div class="policy-card reveal">
+        <div class="policy-icon">📏</div>
+        <div>
+          <div class="policy-title">Measurement Policy</div>
+          <div class="policy-desc">Only door/sheet panel areas are measured and charged at the agreed rate.</div>
+          <div class="policy-urdu">صرف شیٹ والی جگہ کی پیمائش کی جائے گی</div>
+        </div>
+      </div>
+      <div class="policy-card reveal">
+        <div class="policy-icon">🏙️</div>
+        <div>
+          <div class="policy-title">In-City Projects</div>
+          <div class="policy-desc">Food and accommodation arrangements (if needed) are the owner's (Malik's) responsibility.</div>
+          <div class="policy-urdu">شہر میں کھانا و قیام مالک کی ذمہ داری ہوگی</div>
+        </div>
+      </div>
+      <div class="policy-card reveal">
+        <div class="policy-icon">🚗</div>
+        <div>
+          <div class="policy-title">Out-of-City Projects</div>
+          <div class="policy-desc">Food, accommodation and travel arranged by the owner. If unavailable, separate charges will apply.</div>
+          <div class="policy-urdu">شہر سے باہر کھانا، رہائش اور کرایہ مالک دے گا — ورنہ الگ چارج ہوگا</div>
+        </div>
+      </div>
+      <div class="policy-card reveal">
+        <div class="policy-icon">✅</div>
+        <div>
+          <div class="policy-title">Final Payment</div>
+          <div class="policy-desc">Full remaining payment is due immediately upon work completion.</div>
+          <div class="policy-urdu">کام مکمل ہونے پر فوری مکمل ادائیگی کرنی ہوگی</div>
+        </div>
+      </div>
+      <div class="policy-card reveal">
+        <div class="policy-icon">🔒</div>
+        <div>
+          <div class="policy-title">Rate Binding</div>
+          <div class="policy-desc">Once the rate is finalized, it applies to the actual measured area at site and is binding on both parties.</div>
+          <div class="policy-urdu">فائنل ریٹ دونوں فریقوں پر لازمی ہوگا</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGREEMENT -->
+<section id="agreement">
+  <div class="section-container">
+    <div class="section-label reveal">Legal Document</div>
+    <h2 class="section-title reveal">Project <span>Agreement</span></h2>
+    <p class="section-sub reveal">Fill in project details and download a legally binding agreement.</p>
+    <div class="agreement-form reveal">
+      <div class="form-row">
+        <div class="form-group"><label>Client Full Name</label><input type="text" id="agClient" placeholder="Client name"></div>
+        <div class="form-group"><label>Client Phone</label><input type="text" id="agPhone" placeholder="03XXXXXXXXX"></div>
+      </div>
+      <div class="form-group"><label>Client Address</label><input type="text" id="agAddress" placeholder="Complete address"></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Project Type</label>
+          <select id="agProjectType">
+            <option>Kitchen</option>
+            <option>Wardrobe</option>
+            <option>Media Wall</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Service Type</label>
+          <select id="agServiceType">
+            <option value="labor">Labor Only — Rs. 600/sq.ft</option>
+            <option value="material">With Material — Rs. 3,500/sq.ft</option>
+            <option value="sketch">3D Sketch Only — Rs. 100/sq.ft</option>
+            <option value="supervision">Supervision Only — Rs. 150/sq.ft</option>
+            <option value="sketch_supervision">3D Sketch + Supervision — Rs. 250/sq.ft</option>
+            <option value="sketch_cutting">3D Sketch + Cutting List — Rs. 200/sq.ft</option>
+            <option value="cutting">Cutting List Only — Custom</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Total Estimated Area (sq.ft)</label><input type="number" id="agArea" placeholder="e.g. 120" oninput="agCalc()"></div>
+        <div class="form-group"><label>Rate per Sq.Ft (Rs.)</label><input type="number" id="agRate" placeholder="Auto-filled" oninput="agCalc()"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Total Amount (Rs.)</label><input type="number" id="agTotal" placeholder="Auto-calculated" readonly></div>
+        <div class="form-group"><label>10% Advance (Rs.)</label><input type="number" id="agAdvance" placeholder="Auto-calculated" readonly></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Remaining Amount (Rs.)</label><input type="number" id="agRemaining" placeholder="Auto-calculated" readonly></div>
+        <div class="form-group"><label>Penalty Amount (Rs.)</label><input type="number" id="agPenalty" placeholder="Penalty if backing out"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Start Date</label><input type="date" id="agStart"></div>
+        <div class="form-group"><label>Estimated Completion Date</label><input type="date" id="agEnd"></div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;color:var(--gold);margin:1.5rem 0 1rem;font-size:1.1rem;">Terms & Conditions</h3>
+      <div class="terms-box">
+        <h4>MZ Wood Works — Official Terms & Conditions</h4>
+        <p><strong>1. Advance Payment:</strong> 10% of the total agreed amount must be paid as advance upon deal confirmation to begin work.
+        <span class="urdu-term">ڈیل فائنل ہونے پر کل رقم کا 10 فیصد ایڈوانس دینا ہوگا۔</span></p>
+        <p><strong>2. Final Payment:</strong> The full remaining balance must be cleared immediately upon work completion.
+        <span class="urdu-term">کام مکمل ہونے کے فوراً بعد باقی رقم ادا کرنی ہوگی۔</span></p>
+        <p><strong>3. In-City Projects:</strong> Food and accommodation (if required) are the owner's responsibility.
+        <span class="urdu-term">شہر میں کھانا و قیام مالک کی ذمہ داری ہوگی۔</span></p>
+        <p><strong>4. Out-of-City Projects:</strong> Food, accommodation and travel are the owner's responsibility. If unavailable, additional charges will apply separately.
+        <span class="urdu-term">شہر سے باہر کھانا، رہائش اور کرایہ مالک دے گا، ورنہ الگ چارج ہوگا۔</span></p>
+        <p><strong>5. Measurement:</strong> Pricing is based on the measured door/sheet panel area only.
+        <span class="urdu-term">صرف جہاں شیٹ لگے گی وہی پیمائش چارج ہوگی۔</span></p>
+        <p><strong>6. Rate Binding:</strong> The rate once finalized is binding on both parties and applies to the actual measured area.
+        <span class="urdu-term">جو ریٹ فائنل ہو وہ دونوں پر لازم ہوگا۔</span></p>
+        <p><strong>7. Penalty Clause:</strong> Either party backing out after signing this agreement will be liable to pay the agreed penalty amount.
+        <span class="urdu-term">دستخط کے بعد پیچھے ہٹنے پر پینلٹی رقم ادا کرنی ہوگی۔</span></p>
+      </div>
+
+      <div class="sig-row">
+        <div class="sig-box">
+          <div class="sig-label">Client Signature</div>
+          <input type="text" placeholder="Client Full Name">
+          <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;">Date: ___________</div>
+        </div>
+        <div class="sig-box">
+          <div class="sig-label">MZ Wood Works Representative</div>
+          <input type="text" placeholder="MZ Wood Works" value="MZ Wood Works">
+          <div style="font-size:0.72rem;color:var(--text3);margin-top:6px;">Date: ___________</div>
+        </div>
+      </div>
+      <br>
+      <button class="btn-primary" onclick="downloadAgreement()" style="width:100%;font-size:1rem;padding:16px;justify-content:center;"><i class="fas fa-file-download"></i> Download Agreement PDF</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-container">
+    <div class="section-label reveal">Get In Touch</div>
+    <h2 class="section-title reveal">Contact <span>Us</span></h2>
+    <p class="section-sub reveal">Ready to start your project? Call, WhatsApp, or fill the form below.</p>
+    <div class="contact-layout">
+      <div class="contact-cards">
+        <div class="contact-card reveal">
+          <div class="contact-phone"><i class="fas fa-phone"></i> 03XX-XXXXXXX</div>
+          <div style="font-size:0.8rem;color:var(--text3);margin-bottom:1rem;">Primary Contact Number</div>
+          <div class="contact-btns">
+            <a href="tel:03XXXXXXXXX" class="btn-call"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="https://wa.me/923XXXXXXXXX" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+        </div>
+        <div class="contact-card reveal" style="background:linear-gradient(135deg,var(--walnut),rgba(62,28,0,0.5));border-color:rgba(212,165,71,0.3);">
+          <div style="font-size:0.85rem;color:var(--amber);font-weight:600;margin-bottom:0.5rem;font-family:'Playfair Display',serif;">Working Hours</div>
+          <div style="font-size:0.82rem;color:var(--text2);line-height:1.9;">
+            <div>📅 Mon–Sat: 9:00 AM – 8:00 PM</div>
+            <div>📅 Sunday: By Appointment</div>
+            <div class="urdu" style="color:var(--amber);font-size:0.85rem;margin-top:0.5rem;">ہر قسم کا لکڑی کا کام دستیاب ہے</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-panel reveal-right">
+        <h3>Send Us a Message</h3>
+        <div class="form-group"><label>Your Name</label><input type="text" id="cfName" placeholder="Full name"></div>
+        <div class="form-group"><label>Phone Number</label><input type="text" id="cfPhone" placeholder="03XXXXXXXXX"></div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select id="cfService">
+            <option value="">-- Select Service --</option>
+            <option>Kitchen Design & Build</option>
+            <option>Wardrobe (Handle/Handleless)</option>
+            <option>Media Wall</option>
+            <option>3D Sketch Only</option>
+            <option>Supervision Only</option>
+            <option>Cutting List</option>
+            <option>With Material Work</option>
+            <option>Labor Only Work</option>
+            <option>Other / Consultation</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea id="cfMessage" rows="4" placeholder="Describe your project or query..." style="resize:vertical;"></textarea></div>
+        <button class="btn-primary" onclick="submitContact()" style="width:100%;justify-content:center;"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">🪵 MZ Wood Works</div>
+      <div class="footer-tagline">
+        Premium woodworking services — kitchens, wardrobes, media walls and more.
+        <div class="urdu">ہر لکڑی کے کام میں معیار اور خوبصورتی</div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#agreement">Agreement</a>
+    </div>
+    <div class="footer-links">
+      <h4>Company</h4>
+      <a href="#process">Our Process</a>
+      <a href="#terms">Terms & Policy</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 MZ Wood Works. All Rights Reserved.</p>
+    <p>Crafting Excellence in Wood — کام میں معیار اور خوبصورتی</p>
+  </div>
+</footer>
+
+<div id="printArea" style="display:none;"></div>
+
+<script>
+// THEME
+const html = document.documentElement;
+const themeBtn = document.getElementById('themeToggle');
+let isDark = localStorage.getItem('theme') !== 'light';
+function applyTheme(){
+  html.setAttribute('data-theme', isDark ? 'dark':'light');
+  themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  localStorage.setItem('theme', isDark ? 'dark':'light');
+}
+applyTheme();
+themeBtn.addEventListener('click', ()=>{ isDark=!isDark; applyTheme(); });
+
+// MOBILE MENU
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', ()=>mobileMenu.classList.toggle('open'));
+function closeMenu(){ mobileMenu.classList.remove('open'); }
+
+// NAVBAR SCROLL
+window.addEventListener('scroll', ()=>{
+  const nb=document.getElementById('navbar');
+  nb.style.background = window.scrollY>50
+    ? (isDark?'rgba(10,6,2,0.97)':'rgba(250,243,224,0.97)')
+    : (isDark?'rgba(15,10,5,0.85)':'rgba(250,243,224,0.92)');
+});
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.1, rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>{
+  observer.observe(el);
+  const siblings = el.parentElement.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+  siblings.forEach((s,i)=> s.style.transitionDelay = (i*0.08)+'s');
+});
+
+// PRICING DATA
+const rates = {
+  labor:{ name:'Labor Only (Without Material)', rate:600 },
+  material:{ name:'With Material (Full Service)', rate:3500 },
+  sketch:{ name:'3D Sketch Only', rate:100 },
+  supervision:{ name:'Supervision Only', rate:150 },
+  sketch_supervision:{ name:'3D Sketch + Supervision', rate:250 },
+  sketch_cutting:{ name:'3D Sketch + Cutting List', rate:200 },
+  cutting:{ name:'Cutting List Only', rate:0 }
+};
+
+function fmt(n){ return 'Rs. ' + Math.round(n).toLocaleString('en-PK'); }
+
+function calculate(){
+  const key = document.getElementById('calcService').value;
+  const sqft = parseFloat(document.getElementById('calcSqft').value) || 0;
+  const data = rates[key];
+  const cuttingNote = document.getElementById('cuttingNote');
+  const calcResult = document.getElementById('calcResult');
+
+  if(key === 'cutting'){
+    cuttingNote.style.display='block';
+    calcResult.style.display='none';
+    return;
+  }
+  cuttingNote.style.display='none';
+  calcResult.style.display='block';
+
+  const total = data.rate * sqft;
+  const advance = total * 0.10;
+  const remaining = total - advance;
+
+  document.getElementById('resService').textContent = data.name;
+  document.getElementById('resRate').textContent = fmt(data.rate);
+  document.getElementById('resSqft').textContent = sqft.toLocaleString('en-PK');
+  animateValue('resTotal', total);
+  animateValue('resAdvance', advance);
+  animateValue('resRemaining', remaining);
+}
+
+function animateValue(id, target){
+  const el = document.getElementById(id);
+  const start = 0;
+  const duration = 600;
+  const startTime = performance.now();
+  function step(now){
+    const progress = Math.min((now-startTime)/duration, 1);
+    const value = start + (target-start)*progress;
+    el.textContent = fmt(value);
+    if(progress<1) requestAnimationFrame(step);
+    else el.textContent = fmt(target);
+  }
+  requestAnimationFrame(step);
+}
+
+function useInCalculator(key){
+  document.getElementById('calcService').value = key;
+  calculate();
+  document.getElementById('calculator').scrollIntoView({behavior:'smooth'});
+  // sync agreement service dropdown too
+  if(document.getElementById('agServiceType')){
+    document.getElementById('agServiceType').value = key;
+    agCalc();
+  }
+}
+
+function quoteOnWhatsApp(){
+  const key = document.getElementById('calcService').value;
+  const sqft = parseFloat(document.getElementById('calcSqft').value) || 0;
+  const data = rates[key];
+  let msg = '';
+  if(key==='cutting'){
+    msg = `Hi MZ Wood Works, I'm interested in the Cutting List service. Please provide a custom quote for my project.`;
+  } else {
+    const total = data.rate*sqft;
+    const advance = total*0.10;
+    msg = `Hi MZ Wood Works, I would like a quote:\n\nService: ${data.name}\nRate: Rs. ${data.rate}/sq.ft\nArea: ${sqft} sq.ft\nEstimated Total: Rs. ${Math.round(total).toLocaleString('en-PK')}\n10% Advance: Rs. ${Math.round(advance).toLocaleString('en-PK')}\n\nPlease confirm availability.`;
+  }
+  window.open(`https://wa.me/923XXXXXXXXX?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// AGREEMENT AUTO-CALC
+function agCalc(){
+  const serviceKey = document.getElementById('agServiceType').value;
+  const data = rates[serviceKey];
+  if(serviceKey !== 'cutting' && !document.getElementById('agRate').value){
+    document.getElementById('agRate').value = data.rate;
+  }
+  const area = parseFloat(document.getElementById('agArea').value)||0;
+  const rate = parseFloat(document.getElementById('agRate').value)||0;
+  const total = area*rate;
+  const advance = total*0.10;
+  const remaining = total-advance;
+  document.getElementById('agTotal').value = total ? Math.round(total) : '';
+  document.getElementById('agAdvance').value = total ? Math.round(advance) : '';
+  document.getElementById('agRemaining').value = total ? Math.round(remaining) : '';
+}
+document.getElementById('agServiceType').addEventListener('change', ()=>{
+  document.getElementById('agRate').value='';
+  agCalc();
+});
+
+// AGREEMENT DOWNLOAD
+function downloadAgreement(){
+  const client = document.getElementById('agClient').value || 'N/A';
+  const phone = document.getElementById('agPhone').value || 'N/A';
+  const address = document.getElementById('agAddress').value || 'N/A';
+  const projectType = document.getElementById('agProjectType').value;
+  const serviceKey = document.getElementById('agServiceType').value;
+  const serviceName = rates[serviceKey].name;
+  const area = document.getElementById('agArea').value || 'N/A';
+  const rate = document.getElementById('agRate').value || 'N/A';
+  const total = document.getElementById('agTotal').value || 'N/A';
+  const advance = document.getElementById('agAdvance').value || 'N/A';
+  const remaining = document.getElementById('agRemaining').value || 'N/A';
+  const penalty = document.getElementById('agPenalty').value || 'N/A';
+  const startDate = document.getElementById('agStart').value || 'N/A';
+  const endDate = document.getElementById('agEnd').value || 'N/A';
+  const today = new Date().toLocaleDateString('en-PK');
+
+  document.getElementById('printArea').innerHTML = `
+    <div style="font-family:'Poppins',sans-serif;max-width:800px;margin:0 auto;padding:30px;background:#fff;color:#222;">
+      <div style="text-align:center;border-bottom:3px double #C68B3A;padding-bottom:20px;margin-bottom:20px;">
+        <div style="font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:#3E1C00;">MZ Wood Works</div>
+        <div style="font-size:13px;color:#888;">Crafting Excellence in Wood</div>
+        <div style="font-size:18px;font-weight:700;color:#C68B3A;margin-top:10px;letter-spacing:3px;">PROJECT AGREEMENT</div>
+        <div style="font-size:13px;color:#888;margin-top:4px;">Date: ${today}</div>
+      </div>
+      <div style="background:#FAF3E0;border-left:4px solid #C68B3A;padding:15px 20px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+        <h3 style="color:#3E1C00;font-size:14px;margin-bottom:12px;font-family:'Playfair Display',serif;">CLIENT DETAILS</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;">
+          <div><strong>Name:</strong> ${client}</div>
+          <div><strong>Phone:</strong> ${phone}</div>
+          <div style="grid-column:span 2"><strong>Address:</strong> ${address}</div>
+        </div>
+      </div>
+      <div style="background:#FAF3E0;border-left:4px solid #3E1C00;padding:15px 20px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+        <h3 style="color:#3E1C00;font-size:14px;margin-bottom:8px;font-family:'Playfair Display',serif;">PROJECT DETAILS</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;">
+          <div><strong>Project Type:</strong> ${projectType}</div>
+          <div><strong>Service:</strong> ${serviceName}</div>
+          <div><strong>Start Date:</strong> ${startDate}</div>
+          <div><strong>Est. Completion:</strong> ${endDate}</div>
+        </div>
+      </div>
+      <div style="background:#FAF3E0;border-left:4px solid #D4A547;padding:15px 20px;margin-bottom:20px;border-radius:0 8px 8px 0;">
+        <h3 style="color:#3E1C00;font-size:14px;margin-bottom:12px;font-family:'Playfair Display',serif;">FINANCIAL TERMS</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;">
+          <div><strong>Area:</strong> ${area} sq.ft</div>
+          <div><strong>Rate:</strong> Rs. ${rate}/sq.ft</div>
+          <div><strong>Total Amount:</strong> Rs. ${total}</div>
+          <div><strong>10% Advance:</strong> Rs. ${advance}</div>
+          <div><strong>Remaining:</strong> Rs. ${remaining}</div>
+          <div><strong>Penalty (if breach):</strong> Rs. ${penalty}</div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #ddd;padding:15px 20px;margin-bottom:20px;border-radius:8px;">
+        <h3 style="color:#3E1C00;font-size:14px;margin-bottom:10px;font-family:'Playfair Display',serif;">TERMS & CONDITIONS</h3>
+        <ol style="font-size:12px;line-height:2;color:#444;padding-left:20px;">
+          <li>10% advance payment required upon deal confirmation to begin work. | <span style="font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:13px;color:#C68B3A;">ڈیل فائنل ہونے پر 10% ایڈوانس لازمی ہے۔</span></li>
+          <li>Full remaining balance must be cleared immediately upon work completion. | <span style="font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:13px;color:#C68B3A;">کام مکمل ہونے کے فوراً بعد باقی ادائیگی فوری ہوگی۔</span></li>
+          <li>In-city: food & accommodation (if needed) is owner's responsibility. | <span style="font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:13px;color:#C68B3A;">شہر میں کھانا و قیام مالک کی ذمہ داری ہوگی۔</span></li>
+          <li>Out-of-city: food, stay & travel by owner, or separate charges apply. | <span style="font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:13px;color:#C68B3A;">شہر سے باہر کھانا/رہائش/کرایہ مالک دے گا، ورنہ الگ چارج۔</span></li>
+          <li>Pricing is based on measured door/sheet panel area only. | <span style="font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:13px;color:#C68B3A;">صرف شیٹ والی جگہ کی پیمائش چارج ہوگی۔</span></li>
+          <li>Finalized rate is binding on both parties for the measured area. | <span style="font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:13px;color:#C68B3A;">فائنل ریٹ دونوں پر لازمی ہوگا۔</span></li>
+          <li>Backing out after signing = penalty of Rs. ${penalty} is payable. | <span style="font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:13px;color:#C68B3A;">پیچھے ہٹنے پر پینلٹی ادا ہوگی۔</span></li>
+        </ol>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px;">
+        <div style="border-top:2px solid #C68B3A;padding-top:10px;text-align:center;">
+          <div style="font-size:11px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-bottom:15px;">Client Signature</div>
+          <div style="font-size:13px;font-weight:600;">${client}</div>
+          <div style="font-size:11px;color:#888;margin-top:4px;">Date: ___________</div>
+        </div>
+        <div style="border-top:2px solid #3E1C00;padding-top:10px;text-align:center;">
+          <div style="font-size:11px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-bottom:15px;">MZ Wood Works Representative</div>
+          <div style="font-size:13px;font-weight:600;">MZ Wood Works</div>
+          <div style="font-size:11px;color:#888;margin-top:4px;">Date: ___________</div>
+        </div>
+      </div>
+      <div style="margin-top:25px;text-align:center;font-size:11px;color:#aaa;border-top:1px solid #eee;padding-top:15px;">
+        MZ Wood Works — Crafting Excellence in Wood | ہر لکڑی کے کام میں معیار اور خوبصورتی
+      </div>
+    </div>`;
+  document.getElementById('printArea').style.display='block';
+  window.print();
+  setTimeout(()=>{ document.getElementById('printArea').style.display='none'; }, 1000);
+}
+
+// CONTACT FORM
+function submitContact(){
+  const name = document.getElementById('cfName').value.trim();
+  const phone = document.getElementById('cfPhone').value.trim();
+  const service = document.getElementById('cfService').value;
+  const message = document.getElementById('cfMessage').value.trim();
+  if(!name || !phone){ showToast('⚠️ Please enter your name and phone number.'); return; }
+  const inquiry = { name, phone, service, message, date:new Date().toLocaleString() };
+  const saved = JSON.parse(localStorage.getItem('mz_inquiries')||'[]');
+  saved.push(inquiry);
+  localStorage.setItem('mz_inquiries', JSON.stringify(saved));
+  document.getElementById('cfName').value='';
+  document.getElementById('cfPhone').value='';
+  document.getElementById('cfService').value='';
+  document.getElementById('cfMessage').value='';
+  showToast('✅ Message sent! We will contact you soon. شکریہ!');
+}
+
+// TOAST
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3500);
+}
+
+// INIT
+calculate();
+agCalc();
+</script>
+</body>
+</html>
